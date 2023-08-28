@@ -1,9 +1,6 @@
 package com.springboot.restwebservice.helloWorldController;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloWorldController {
@@ -19,5 +16,12 @@ public class HelloWorldController {
     @GetMapping(path = "/hello-world-bean")
     public HelloWorldBean helloWorldBean(){
         return new HelloWorldBean("Hello World Bean");
+    }
+
+    //path parameter - /users/{1} ==> users/1
+
+    @GetMapping(path = "/hello-world-variable/{name}")
+    public HelloWorldBean getUsers(@PathVariable String name){
+        return new HelloWorldBean("Hello World " + name);
     }
 }
